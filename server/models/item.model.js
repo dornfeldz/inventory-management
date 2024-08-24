@@ -5,6 +5,7 @@ const ItemSchema = mongoose.Schema(
     inventory_id: {
       type: Number,
       required: [true, "Please enter an inventory id!"],
+      unique: true,
     },
     name: {
       type: String,

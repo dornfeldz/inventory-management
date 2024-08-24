@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Items() {
+function Items({ rerender }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -15,17 +15,9 @@ function Items() {
     };
 
     fetchData();
-  }, []);
+  }, [rerender]);
 
   return (
-    // <ol>
-    //   {items.map((item, index) => (
-    //     <li key={index}>
-    //       {item.inventory_id} | {item.name} | {item.model} | {item.depot} |{" "}
-    //       {item.price}Ft
-    //     </li>
-    //   ))}
-    // </ol>
     <table className="border w-[50%]">
       <thead>
         <tr className="text-left border-b">
@@ -34,6 +26,7 @@ function Items() {
           <th>Model</th>
           <th>Depot</th>
           <th>Price</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -44,6 +37,9 @@ function Items() {
             <td>{item.model}</td>
             <td>{item.depot}</td>
             <td>{item.price}Ft</td>
+            <td>
+              <p className="hover:cursor-pointer w-min">Delete</p>
+            </td>
           </tr>
         ))}
       </tbody>
