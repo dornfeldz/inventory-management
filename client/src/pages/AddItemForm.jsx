@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
-function AddItemForm({ handleRerender, rerender }) {
+function AddItemForm() {
+  const [successMessage, setSuccessMessage] = useState("");
   const [formData, setFormData] = useState({
     inventory_id: "",
     name: "",
@@ -24,15 +25,28 @@ function AddItemForm({ handleRerender, rerender }) {
       .post("http://localhost:3000/api/items", formData)
       .then((response) => {
         console.log(response.data);
+        displaySuccess();
+        setFormData({
+          inventory_id: "",
+          name: "",
+          model: "",
+          depot: "",
+          price: "",
+        });
+        // handleRerender((prev) => !prev);
       })
       .catch((error) => {
         console.error("There was an error!", error);
       });
-    handleRerender((prev) => !prev);
+  };
+
+  const displaySuccess = () => {
+    setSuccessMessage("Item added!");
+    setTimeout(() => setSuccessMessage(""), 2000);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col w-[50%]">
+    <form onSubmit={handleSubmit} className="flex flex-col w-[50%] mx-auto">
       <label htmlFor="inventory_id">Inventory ID</label>
       <input
         type="number"
@@ -78,9 +92,10 @@ function AddItemForm({ handleRerender, rerender }) {
         onChange={handleChange}
         className="border"
       />
-      <button type="submit" className="border mb-10">
+      <button type="submit" className="border mt-5 mb-5">
         Add Item
       </button>
+      <p className="mx-auto">{successMessage}</p>
     </form>
   );
 }

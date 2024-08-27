@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
-function Items({ rerender }) {
+function Items({ handleRerender, rerender }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -17,8 +18,20 @@ function Items({ rerender }) {
     fetchData();
   }, [rerender]);
 
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:3000/api/items/${id}`)
+      .then(() => {
+        console.log(`Item ${id} deleted!`);
+        handleRerender((prev) => !prev);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
-    <table className="border w-[50%]">
+    <table className="border w-[80%] mx-auto">
       <thead>
         <tr className="text-left border-b">
           <th>Inventory ID</th>
@@ -38,7 +51,12 @@ function Items({ rerender }) {
             <td>{item.depot}</td>
             <td>{item.price}Ft</td>
             <td>
-              <p className="hover:cursor-pointer w-min">Delete</p>
+              <p
+                className="hover:cursor-pointer w-min"
+                onClick={() => handleDelete(item._id)}
+              >
+                Delete
+              </p>
             </td>
           </tr>
         ))}
