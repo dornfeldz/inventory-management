@@ -24,6 +24,7 @@ const createItem = async (req, res) => {
     res.status(201).json(item);
   } catch (err) {
     console.log(err.message);
+    console.log(req.body);
   }
 };
 

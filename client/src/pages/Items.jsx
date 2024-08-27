@@ -22,7 +22,7 @@ function Items({ handleRerender, rerender }) {
     axios
       .delete(`http://localhost:3000/api/items/${id}`)
       .then(() => {
-        console.log(`Item ${id} deleted!`);
+        console.log(`${id} deleted!`);
         handleRerender((prev) => !prev);
       })
       .catch((error) => {

@@ -13,10 +13,10 @@ function AddItemForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -75,14 +75,18 @@ function AddItemForm() {
         className="border"
       />
       <label htmlFor="depot">Depot</label>
-      <input
-        type="text"
+      <select
         name="depot"
-        id=""
-        value={formData.depot}
+        id="depot"
         onChange={handleChange}
+        value={formData.depot}
         className="border"
-      />
+      >
+        <option value=""></option>
+        <option value="IT Depot">IT Depot</option>
+        <option value="Central Depot">Central Depot</option>
+        <option value="NX Depot">NX Depot</option>
+      </select>
       <label htmlFor="price">Price</label>
       <input
         type="number"
@@ -92,7 +96,7 @@ function AddItemForm() {
         onChange={handleChange}
         className="border"
       />
-      <button type="submit" className="border mt-5 mb-5">
+      <button type="submit" className="border mt-5 mb-5 hover:bg-gray-200">
         Add Item
       </button>
       <p className="mx-auto">{successMessage}</p>
