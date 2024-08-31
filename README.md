@@ -4,9 +4,9 @@
 
 ## Features
 
-- **Add New Items**: Easily add new inventory items with details such as name, description, quantity, and price.
-- **View Inventory**: Browse a list of all inventory items with sortable and filterable columns.
-- **Edit Items**: Update item details to reflect changes in stock, pricing, or other attributes.
+- **Add New Items**: Easily add new inventory items with details such as name, model, depo, and price.
+- **View Inventory**: Browse a list of all inventory items.
+- **Edit Items**: Update item details to reflect changes.
 - **Delete Items**: Remove inventory items that are no longer needed to keep your inventory list accurate.
 
 ## Tech Stack
