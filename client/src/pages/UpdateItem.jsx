@@ -102,7 +102,7 @@ function UpdateItem() {
         className="border"
       />
       <button type="submit" className="border mt-5 mb-5 hover:bg-gray-200">
-        Add Item
+        Update Item
       </button>
       <p className="mx-auto">{successMessage}</p>
     </form>

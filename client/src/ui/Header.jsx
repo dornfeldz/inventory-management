@@ -5,7 +5,7 @@ function Header() {
     <div className="flex justify-between mx-10 mb-5 mt-2 items-baseline">
       <Link to="/">
         <div className="flex">
-          <h1 className="text-xl font-extrabold">EcoSTAT 2</h1>
+          <h1 className="text-xl font-extrabold">Inventory Manager</h1>
           <p className="text-sm font-extrabold">&#9415;</p>
         </div>
       </Link>
