@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Items({ handleRerender, rerender }) {
@@ -31,7 +32,7 @@ function Items({ handleRerender, rerender }) {
   };
 
   return (
-    <table className="border w-[80%] mx-auto">
+    <table className="text-xs md:text-md border w-[90%] md:w-[80%] mx-auto">
       <thead>
         <tr className="text-left border-b">
           <th>Inventory ID</th>
@@ -40,6 +41,7 @@ function Items({ handleRerender, rerender }) {
           <th>Depot</th>
           <th>Price</th>
           <th>Delete</th>
+          <th>Update</th>
         </tr>
       </thead>
       <tbody>
@@ -57,6 +59,9 @@ function Items({ handleRerender, rerender }) {
               >
                 Delete
               </p>
+            </td>
+            <td>
+              <Link to={`/update/${item._id}`}>Update</Link>
             </td>
           </tr>
         ))}

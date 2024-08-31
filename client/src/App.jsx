@@ -3,6 +3,7 @@ import AddItemForm from "./pages/AddItemForm";
 import Items from "./pages/Items";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
+import UpdateItem from "./pages/UpdateItem";
 
 function App() {
   const [rerenderList, setRerenderList] = useState(false);
@@ -31,6 +32,10 @@ function App() {
               rerender={rerenderList}
             />
           ),
+        },
+        {
+          path: "/update/:id",
+          element: <UpdateItem />,
         },
       ],
     },

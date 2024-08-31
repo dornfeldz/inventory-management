@@ -1,0 +1,9 @@
+/* styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+td,
+th {
+  @apply border-r border-b px-1; /* Add your desired classes here */
+}

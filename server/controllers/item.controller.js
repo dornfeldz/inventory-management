@@ -28,6 +28,18 @@ const createItem = async (req, res) => {
   }
 };
 
+const updateItem = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedData = req.body;
+    const item = await Item.findByIdAndUpdate(id, updatedData, { new: true });
+    if (!item) res.status(404).json({ message: "Item not found!" });
+    res.status(200).json({ message: "Item updated successfully!" });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const deleteItem = async (req, res) => {
   try {
     const { id } = req.params;
@@ -41,6 +53,8 @@ const deleteItem = async (req, res) => {
 
 module.exports = {
   getItems,
+  getItem,
   createItem,
+  updateItem,
   deleteItem,
 };
