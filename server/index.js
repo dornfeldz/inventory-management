@@ -25,3 +25,5 @@ mongoose
   .catch(() => {
     console.log("Conection failed!");
   });
+
+module.exports = app;
