@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div className="flex justify-between mx-10 mb-5 mt-2 items-baseline">
+    <div className="flex justify-between mx-5 lg:mx-10 mb-5 mt-2 items-baseline">
       <Link to="/">
         <div className="flex">
           <h1 className="text-xl font-extrabold">Inventory Manager</h1>
