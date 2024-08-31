@@ -32,7 +32,7 @@ function Items({ handleRerender, rerender }) {
   };
 
   return (
-    <table className="text-xs md:text-md border w-[90%] md:w-[80%] mx-auto">
+    <table className="text-xs lg:text-base border w-[90%] lg:w-[80%] mx-auto">
       <thead>
         <tr className="text-left border-b">
           <th>Inventory ID</th>
