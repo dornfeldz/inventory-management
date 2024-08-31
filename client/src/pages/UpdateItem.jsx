@@ -11,7 +11,9 @@ function UpdateItem() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/items/${id}`);
+        const res = await fetch(
+          `https://inventory-backend-gules.vercel.app/api/items/${id}`
+        );
         const data = await res.json();
         setItem(data);
       } catch (error) {
@@ -25,7 +27,7 @@ function UpdateItem() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:3000/api/items/${id}`, item)
+      .put(`https://inventory-backend-gules.vercel.app/api/items/${id}`, item)
       .then((response) => {
         console.log(response.data);
         displaySuccess();

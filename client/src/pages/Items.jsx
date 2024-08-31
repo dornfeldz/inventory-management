@@ -8,7 +8,9 @@ function Items({ handleRerender, rerender }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/items");
+        const res = await fetch(
+          "https://inventory-backend-gules.vercel.app/api/items"
+        );
         const data = await res.json();
         setItems(data);
       } catch (error) {
@@ -21,7 +23,7 @@ function Items({ handleRerender, rerender }) {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3000/api/items/${id}`)
+      .delete(`https://inventory-backend-gules.vercel.app/api/items/${id}`)
       .then(() => {
         console.log(`${id} deleted!`);
         handleRerender((prev) => !prev);

@@ -22,7 +22,7 @@ function AddItemForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/api/items", formData)
+      .post("https://inventory-backend-gules.vercel.app/api/items", formData)
       .then((response) => {
         console.log(response.data);
         displaySuccess();
