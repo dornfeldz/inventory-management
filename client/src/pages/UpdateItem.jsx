@@ -59,7 +59,7 @@ function UpdateItem() {
         id=""
         value={item.inventory_id}
         onChange={handleChange}
-        className="border"
+        className="border rounded-md"
       />
       <label htmlFor="name">Name</label>
       <input
@@ -68,7 +68,7 @@ function UpdateItem() {
         id=""
         value={item.name}
         onChange={handleChange}
-        className="border"
+        className="border rounded-md"
       />
       <label htmlFor="model">Model</label>
       <input
@@ -77,7 +77,7 @@ function UpdateItem() {
         id=""
         value={item.model}
         onChange={handleChange}
-        className="border"
+        className="border rounded-md"
       />
       <label htmlFor="depot">Depot</label>
       <select
@@ -85,7 +85,7 @@ function UpdateItem() {
         id="depot"
         onChange={handleChange}
         value={item.depot}
-        className="border"
+        className="border rounded-md"
       >
         <option value=""></option>
         <option value="IT Depot">IT Depot</option>
@@ -99,9 +99,12 @@ function UpdateItem() {
         id=""
         value={item.price}
         onChange={handleChange}
-        className="border"
+        className="border rounded-md"
       />
-      <button type="submit" className="border mt-5 mb-5 hover:bg-gray-200">
+      <button
+        type="submit"
+        className="mt-5 mb-5 hover:bg-[#459fff] bg-[#007BFF] py-2 rounded-md text-white"
+      >
         Update Item
       </button>
       <p className="mx-auto">{successMessage}</p>

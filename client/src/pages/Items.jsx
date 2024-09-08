@@ -42,8 +42,8 @@ function Items({ handleRerender, rerender }) {
 
   return (
     <>
-      <table className="text-xs lg:text-base border w-[90%] lg:w-[80%] mx-auto">
-        <thead>
+      <table className="text-xs lg:text-base border w-[90%] lg:w-[80%] mx-auto rounded-md">
+        <thead className="bg-[#4A90E2] text-white">
           <tr className="text-left border-b">
             <th>Inventory ID</th>
             <th>Name</th>
@@ -56,7 +56,10 @@ function Items({ handleRerender, rerender }) {
         </thead>
         <tbody>
           {items.map((item, index) => (
-            <tr key={index}>
+            <tr
+              key={index}
+              className="even:bg-white odd:bg-[#F2F2F2] hover:bg-[#E0F3FF] text-[#333333]"
+            >
               <td>{item.inventory_id}</td>
               <td>{item.name}</td>
               <td>{item.model}</td>

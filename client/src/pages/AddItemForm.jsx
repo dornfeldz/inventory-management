@@ -54,7 +54,7 @@ function AddItemForm() {
         id=""
         value={formData.inventory_id}
         onChange={handleChange}
-        className="border"
+        className="border rounded-md"
       />
       <label htmlFor="name">Name</label>
       <input
@@ -63,7 +63,7 @@ function AddItemForm() {
         id=""
         value={formData.name}
         onChange={handleChange}
-        className="border"
+        className="border rounded-md"
       />
       <label htmlFor="model">Model</label>
       <input
@@ -72,7 +72,7 @@ function AddItemForm() {
         id=""
         value={formData.model}
         onChange={handleChange}
-        className="border"
+        className="border rounded-md"
       />
       <label htmlFor="depot">Depot</label>
       <select
@@ -80,7 +80,7 @@ function AddItemForm() {
         id="depot"
         onChange={handleChange}
         value={formData.depot}
-        className="border"
+        className="border rounded-md"
       >
         <option value=""></option>
         <option value="IT Depot">IT Depot</option>
@@ -94,9 +94,12 @@ function AddItemForm() {
         id=""
         value={formData.price}
         onChange={handleChange}
-        className="border"
+        className="border rounded-md"
       />
-      <button type="submit" className="border mt-5 mb-5 hover:bg-gray-200">
+      <button
+        type="submit"
+        className="mt-5 mb-5 hover:bg-[#459fff] bg-[#007BFF] py-2 rounded-md text-white"
+      >
         Add Item
       </button>
       <p className="mx-auto">{successMessage}</p>
