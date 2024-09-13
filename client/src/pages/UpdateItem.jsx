@@ -69,6 +69,7 @@ function UpdateItem() {
           value={item.inventory_id}
           onChange={handleChange}
           className="border rounded-md"
+          required
         />
         <label htmlFor="name">Name</label>
         <input
@@ -78,6 +79,7 @@ function UpdateItem() {
           value={item.name}
           onChange={handleChange}
           className="border rounded-md"
+          required
         />
         <label htmlFor="model">Model</label>
         <input
@@ -87,6 +89,7 @@ function UpdateItem() {
           value={item.model}
           onChange={handleChange}
           className="border rounded-md"
+          required
         />
         <label htmlFor="depot">Depot</label>
         <select
@@ -95,6 +98,7 @@ function UpdateItem() {
           onChange={handleChange}
           value={item.depot}
           className="border rounded-md"
+          required
         >
           <option value=""></option>
           <option value="IT Depot">IT Depot</option>
@@ -109,6 +113,7 @@ function UpdateItem() {
           value={item.price}
           onChange={handleChange}
           className="border rounded-md"
+          required
         />
         <button
           type="submit"
@@ -119,7 +124,7 @@ function UpdateItem() {
       </form>
       <p className="mx-auto text-center text-green-500">{successMessage}</p>
       {errorMessage && (
-        <p className="mx-auto text-center, text-red-500">{errorMessage}</p>
+        <p className="mx-auto text-center text-red-500">{errorMessage}</p>
       )}
     </>
   );

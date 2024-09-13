@@ -66,6 +66,7 @@ function AddItemForm() {
           value={formData.inventory_id}
           onChange={handleChange}
           className="border rounded-md"
+          required
         />
         <label htmlFor="name">Name</label>
         <input
@@ -75,6 +76,7 @@ function AddItemForm() {
           value={formData.name}
           onChange={handleChange}
           className="border rounded-md"
+          required
         />
         <label htmlFor="model">Model</label>
         <input
@@ -84,6 +86,7 @@ function AddItemForm() {
           value={formData.model}
           onChange={handleChange}
           className="border rounded-md"
+          required
         />
         <label htmlFor="depot">Depot</label>
         <select
@@ -92,6 +95,7 @@ function AddItemForm() {
           onChange={handleChange}
           value={formData.depot}
           className="border rounded-md"
+          required
         >
           <option value=""></option>
           <option value="IT Depot">IT Depot</option>
@@ -106,6 +110,7 @@ function AddItemForm() {
           value={formData.price}
           onChange={handleChange}
           className="border rounded-md"
+          required
         />
         <button
           type="submit"
@@ -114,7 +119,7 @@ function AddItemForm() {
           Add Item
         </button>
       </form>
-      <p className="mx-auto text-green-500">{successMessage}</p>
+      <p className="mx-auto text-center text-green-500">{successMessage}</p>
       {errorMessage && (
         <p className="mx-auto text-center test-red-500">{errorMessage}</p>
       )}
