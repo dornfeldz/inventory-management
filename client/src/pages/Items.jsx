@@ -53,7 +53,7 @@ function Items({ handleRerender, rerender }) {
   return (
     <>
       {isLoading && <Loader />}
-      <table className="text-xs lg:text-base border w-[90%] lg:w-[80%] mx-auto rounded-md">
+      <table className="text-[0.5rem] lg:text-base border w-[90%] lg:w-[80%] mx-auto rounded-md">
         <thead className="bg-[#4A90E2] text-white">
           <tr className="text-left border-b">
             <th>Inventory ID</th>
