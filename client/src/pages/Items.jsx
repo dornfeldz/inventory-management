@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Loader from "../ui/Loader";
 
 function Items({ handleRerender, rerender }) {
-  const [items, setItems] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const res = await fetch(
           "https://inventory-backend-gules.vercel.app/api/items"
@@ -15,7 +19,9 @@ function Items({ handleRerender, rerender }) {
         const data = await res.json();
         setItems(data);
       } catch (error) {
-        console.error(error);
+        setErrorMessage("Error fetching data.");
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -31,7 +37,11 @@ function Items({ handleRerender, rerender }) {
         displaySuccess();
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response) {
+          setErrorMessage(error.response.data.message || "Error deleting item");
+        } else {
+          setErrorMessage("Network error or server not responding");
+        }
       });
   };
 
@@ -42,6 +52,7 @@ function Items({ handleRerender, rerender }) {
 
   return (
     <>
+      {isLoading && <Loader />}
       <table className="text-xs lg:text-base border w-[90%] lg:w-[80%] mx-auto rounded-md">
         <thead className="bg-[#4A90E2] text-white">
           <tr className="text-left border-b">
@@ -80,7 +91,10 @@ function Items({ handleRerender, rerender }) {
           ))}
         </tbody>
       </table>
-      <p className="text-center mt-5">{successMessage}</p>
+      <p className="mt-5 text-center text-green-500">{successMessage}</p>
+      {errorMessage && (
+        <p className="mx-auto text-center text-red-500">{errorMessage}</p>
+      )}
     </>
   );
 }

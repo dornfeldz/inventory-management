@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 function UpdateItem() {
-  const [item, setItem] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [item, setItem] = useState({});
 
   const { id } = useParams();
 
@@ -33,7 +34,11 @@ function UpdateItem() {
         displaySuccess();
       })
       .catch((error) => {
-        console.error("There was an error!", error);
+        if (error.response) {
+          setErrorMessage(error.response.data.message || "Error deleting item");
+        } else {
+          setErrorMessage("Network error or server not responding");
+        }
       });
   };
 
@@ -107,7 +112,10 @@ function UpdateItem() {
       >
         Update Item
       </button>
-      <p className="mx-auto">{successMessage}</p>
+      <p className="mx-auto text-center text-green-500">{successMessage}</p>
+      {errorMessage && (
+        <p className="mx-auto text-center, text-red-500">{errorMessage}</p>
+      )}
     </form>
   );
 }

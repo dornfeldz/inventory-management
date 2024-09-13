@@ -3,6 +3,7 @@ import axios from "axios";
 
 function AddItemForm() {
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     inventory_id: "",
     name: "",
@@ -36,7 +37,13 @@ function AddItemForm() {
         // handleRerender((prev) => !prev);
       })
       .catch((error) => {
-        console.error("There was an error!", error);
+        if (error.response) {
+          setErrorMessage(
+            error.response.data.message || "Something went wrong"
+          );
+        } else {
+          setErrorMessage("Network error or server not responding");
+        }
       });
   };
 
@@ -102,7 +109,10 @@ function AddItemForm() {
       >
         Add Item
       </button>
-      <p className="mx-auto">{successMessage}</p>
+      <p className="mx-auto text-green-500">{successMessage}</p>
+      {errorMessage && (
+        <p className="mx-auto text-center test-red-500">{errorMessage}</p>
+      )}
     </form>
   );
 }

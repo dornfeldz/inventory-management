@@ -5,7 +5,9 @@ const getItems = async (req, res) => {
     const items = await Item.find({});
     res.status(200).json(items);
   } catch (err) {
-    console.log(err.message);
+    res
+      .status(500)
+      .json({ message: "Failed to fetch items", error: err.message });
   }
 };
 const getItem = async (req, res) => {
@@ -14,7 +16,9 @@ const getItem = async (req, res) => {
     const items = await Item.findById(id);
     res.status(200).json(items);
   } catch (err) {
-    console.log(err.message);
+    res
+      .status(500)
+      .json({ message: "Failed to fetch item", error: err.message });
   }
 };
 
@@ -23,8 +27,9 @@ const createItem = async (req, res) => {
     const item = await Item.create(req.body);
     res.status(201).json(item);
   } catch (err) {
-    console.log(err.message);
-    console.log(req.body);
+    res
+      .status(500)
+      .json({ message: "Failed to create item", error: err.message });
   }
 };
 
@@ -36,7 +41,9 @@ const updateItem = async (req, res) => {
     if (!item) res.status(404).json({ message: "Item not found!" });
     res.status(200).json({ message: "Item updated successfully!" });
   } catch (err) {
-    console.log(err);
+    res
+      .status(500)
+      .json({ message: "Failed to update item", error: err.message });
   }
 };
 
@@ -47,7 +54,9 @@ const deleteItem = async (req, res) => {
     if (!item) res.status(404).json({ message: "Couldn't find item!" });
     res.status(200).json({ message: "Item deleted successfully!" });
   } catch (err) {
-    console.log(err.message);
+    res
+      .status(500)
+      .json({ message: "Failed to delete item", error: err.message });
   }
 };
 
